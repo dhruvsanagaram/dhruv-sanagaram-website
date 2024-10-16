@@ -51,7 +51,7 @@ export default function HomeLanding() {
 
         {/* Summary Paragraph */}
         <p className="text-lg text-gray-600 dark:text-gray-400 max-w-xl">
-          I’m passionate about backend systems and distributed technologies. I've interned at Intercontinental Exchange and Roche Information Systems, working with modern cloud and data stack solutions.
+            I am currently a student at the University of Illinois Urbana-Champaign who is passionate about applying my knowledge in software engineering to build ground-breaking technologies. I hope to become a well-rounded engineer who can conceive, design, develop, and present compelling software solutions.        
         </p>
 
         {/* Buttons */}
@@ -59,17 +59,17 @@ export default function HomeLanding() {
           <a href="/resume" className="px-6 py-3 bg-blue-500 text-white rounded-lg dark:bg-blue-700">
             Resume
           </a>
-          <a href="https://www.linkedin.com/in/dhruv-sanagaram" className="px-6 py-3 bg-gray-300 text-gray-900 rounded-lg dark:bg-gray-600 dark:text-white">
+          <a href="https://www.linkedin.com/in/dhruvsanagaram" className="px-6 py-3 bg-gray-300 text-gray-900 rounded-lg dark:bg-gray-600 dark:text-white">
             LinkedIn
           </a>
         </div>
 
         {/* Social Icons */}
         <div className="flex space-x-4 mt-4">
-          <a href="https://github.com/your-profile" className="text-gray-700 dark:text-gray-300 hover:text-blue-500">
+          <a href="https://github.com/dhruvsanagaram" className="text-gray-700 dark:text-gray-300 hover:text-blue-500">
             <FaGithub className="w-8 h-8" />
           </a>
-          <a href="https://discordapp.com/users/your-id" className="text-gray-700 dark:text-gray-300 hover:text-blue-500">
+          <a href="https://discordapp.com/" className="text-gray-700 dark:text-gray-300 hover:text-blue-500">
             <FaDiscord className="w-8 h-8" />
           </a>
         </div>
