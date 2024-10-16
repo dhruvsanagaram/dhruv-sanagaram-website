@@ -11,10 +11,11 @@ const config: Config = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        text: "var(--color-text)",
       },
     },
   },
-  plugins: [require('tailwindcss-dark-mode')],
+  plugins: [],
   darkMode: 'class'
 };
 export default config;
