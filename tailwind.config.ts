@@ -13,6 +13,10 @@ const config: Config = {
         foreground: "var(--foreground)",
         text: "var(--color-text)",
       },
+      fontFamily: {
+        roboto: ['Roboto', 'sans-serif'],
+        montserrat: ['Montserrat', 'sans-serif'],
+      }
     },
   },
   plugins: [],
