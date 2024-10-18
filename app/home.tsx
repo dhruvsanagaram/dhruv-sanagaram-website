@@ -31,37 +31,26 @@ export default function HomeLanding() {
 
   return (
     <div className="relative min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
-      {/* Dark Mode Toggle in Top Right */}
-      <Toggle.Root
-        aria-label="Toggle Dark Mode"
-        className="absolute top-4 right-4 p-2 bg-blue-500 text-white rounded-full dark:bg-blue-700"
-        pressed={isDarkMode}
-        onPressedChange={toggleDarkMode}
-      >
-        <span className="text-lg font-semibold">
-          {isDarkMode ? '🌜' : '🌞'}
-        </span>
-      </Toggle.Root>
-
       {/* Header Section */}
       <header className="fixed top-0 left-0 w-full bg-white dark:bg-gray-800 shadow-lg z-50">
-        <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center">
-          <div className="ml-auto flex items-center space-x-6"> {/* Added ml-auto to justify contents to the right */}
-            <a href="/blog" className="text-gray-700 dark:text-gray-300 hover:underline">Blog</a>
-            <a href="/travel-diary" className="text-gray-700 dark:text-gray-300 hover:underline">Travel Diary</a>
-            <Toggle.Root
-              aria-label="Toggle Dark Mode"
-              className="p-2 bg-blue-500 text-white rounded-full dark:bg-blue-700"
-              pressed={isDarkMode}
-              onPressedChange={toggleDarkMode}
-            >
-              <span className="text-lg font-semibold">
-                {isDarkMode ? '🌜' : '🌞'}
-              </span>
-            </Toggle.Root>
-          </div>
-        </nav>
-      </header>
+      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center">
+
+        <div className="ml-auto flex items-center space-x-6"> {/* Added ml-auto to justify contents to the right */}
+          <a href="/blog" className="text-gray-700 dark:text-gray-300 hover:underline">Blog</a>
+          <a href="/travel-diary" className="text-gray-700 dark:text-gray-300 hover:underline">Travel Diary</a>
+          <Toggle.Root
+            aria-label="Toggle Dark Mode"
+            className="p-2 bg-blue-500 text-white rounded-full dark:bg-blue-700"
+            pressed={isDarkMode}
+            onPressedChange={toggleDarkMode}
+          >
+            <span className="text-lg font-semibold">
+              {isDarkMode ? '🌜' : '🌞'}
+            </span>
+          </Toggle.Root>
+        </div>
+      </nav>
+    </header>
 
       {/* Hero Section */}
       <section className="flex flex-col items-center justify-center min-h-screen text-center space-y-6 py-16">
