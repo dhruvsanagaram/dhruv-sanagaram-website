@@ -6,6 +6,8 @@ import * as Tabs from '@radix-ui/react-tabs';
 import { FaGithub, FaDiscord } from 'react-icons/fa';
 import { MdClose } from 'react-icons/md';
 import * as Dialog from '@radix-ui/react-dialog'; // Corrected import for Dialog
+import projects from './projects/projects';
+
 
 export default function HomeLanding() {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -25,13 +27,13 @@ export default function HomeLanding() {
     localStorage.setItem('theme', isDark ? 'dark' : 'light');
   };
 
-  const projects = [
-    { logo: '/nvidia.png', title: 'Nvidia Project', description: 'Your Nvidia project summary', image: '/nvidia-project.png' },
-    { logo: '/linux.png', title: 'Linux Project', description: 'Your Linux project summary', image: '/linux-project.png' },
-    { logo: '/socialblade.png', title: 'Socialblade Project', description: 'Your Socialblade project summary', image: '/socialblade-project.png' },
-    { logo: '/frogger.png', title: 'FPGA Project', description: 'Your FPGA project summary', image: '/fpga-project.png' },
+  // const projects = [
+  //   { logo: '/nvidia.png', title: 'Nvidia Project', description: 'I developed CUDA code to optimize the forward pass of a convolutional neural network in Python, focusing on techniques like shared tiled convolution, loop unrolling, and floating-point optimizations. By deploying these improvements on an NVIDIA A100 GPU, I successfully reduced the execution time from 70 milliseconds to 26 milliseconds.I developed CUDA code to optimize the forward pass of a convolutional neural network in Python, focusing on techniques like shared tiled convolution, loop unrolling, and floating-point optimizations. By deploying these improvements on an NVIDIA A100 GPU, I successfully reduced the execution time from 70 milliseconds to 26 milliseconds.', image: '/cuda.png' },
+  //   { logo: '/linux.png', title: 'Linux Project', description: 'Your Linux project summary', image: '/os.jpg' },
+  //   { logo: '/socialblade.png', title: 'Socialblade Project', description: 'Your Socialblade project summary', image: '/videoinsights.png' },
+  //   { logo: '/frogger.png', title: 'FPGA Project', description: 'Your FPGA project summary', image: '/froggergame.png' },
 
-  ];
+  // ];
 
   return (
     <div className="relative min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
@@ -147,24 +149,24 @@ export default function HomeLanding() {
                   alt={`${project.title} Logo`} 
                   className={`w-full h-full object-contain ${
                     project.title === 'Linux Project' || project.title === 'Socialblade Project' ? 'p-7' : ''
-                  }`}
+                  } rounded-md`}
                 />
               </Dialog.Trigger>
-              <Dialog.Overlay className="fixed inset-0 bg-black opacity-50" />
-              <Dialog.Content className="fixed top-1/2 left-1/2 w-full max-w-3xl p-8 bg-white dark:bg-gray-800 rounded-lg transform -translate-x-1/2 -translate-y-1/2">
-                <Dialog.Close asChild>
-                  <button className="absolute top-4 right-4 text-gray-500 dark:text-gray-300">
-                    <MdClose className="w-6 h-6" />
-                  </button>
-                </Dialog.Close>
-                <div className="flex flex-col lg:flex-row items-center">
-                  <div className="flex-1 text-gray-700 dark:text-gray-300">
-                    <h3 className="text-2xl font-semibold text-blue-500 dark:text-purple-500 mb-4">{project.title}</h3>
-                    <p>{project.description}</p>
-                  </div>
-                  <img src={project.image} alt={`${project.title} Image`} className="w-50 h-60 lg:w-60 lg:h-60 object-contain" />
-                </div>
-              </Dialog.Content>
+              <Dialog.Overlay className="fixed inset-0 bg-black opacity-60 z-40" />
+              <Dialog.Content className="fixed top-1/2 left-1/2 max-w-4xl w-full p-8 bg-white dark:bg-gray-800 rounded-lg transform -translate-x-1/2 -translate-y-1/2 z-50 flex flex-col lg:flex-row justify-between items-center lg:space-x-8 max-h-[90vh]">
+              <Dialog.Close asChild>
+                <button className="absolute top-4 right-4 text-gray-500 dark:text-gray-300">
+                  <MdClose className="w-6 h-6" />
+                </button>
+              </Dialog.Close>
+              <div className="flex-1 text-center lg:text-left text-gray-700 dark:text-gray-300">
+                <h3 className="text-2xl font-semibold text-blue-500 dark:text-purple-500 mb-4">{project.title}</h3>
+                <p>{project.description}</p>
+              </div>
+              <div className="flex justify-center items-center mt-4 lg:mt-0">
+                <img src={project.image} alt={`${project.title} Image`} className="w-80 h-80 lg:w-96 lg:h-96 object-contain rounded-lg" />
+              </div>
+            </Dialog.Content>
             </Dialog.Root>
           ))}
         </div>
@@ -178,19 +180,20 @@ export default function HomeLanding() {
           white-space: nowrap;
           margin: 0 auto;
           letter-spacing: 0.15em;
+          max-width: 100%; /* Ensures that it doesn't overflow */
+          display: inline-block; /* This limits the width to the actual content */
           animation: typing 3.5s steps(30, end) infinite, blink-caret 0.75s step-end infinite;
         }
-
+        
         @keyframes typing {
           from { width: 0; }
-          to { width: 100%; }
+          to { width: 100%; /* This ensures it types the content and stops at the end of the text */ }
         }
-
+        
         @keyframes blink-caret {
           from, to { border-color: transparent; }
           50% { border-color: currentColor; }
         }
-
         /* Smooth Scrolling */
         html {
           scroll-behavior: smooth;
@@ -199,4 +202,3 @@ export default function HomeLanding() {
     </div>
   );
 }
-
