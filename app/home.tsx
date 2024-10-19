@@ -1,5 +1,4 @@
-"use client";
-
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import * as Tabs from '@radix-ui/react-tabs';
 import { FaGithub, FaAws, FaDocker, FaJava, FaJsSquare, FaPython } from 'react-icons/fa';
@@ -7,7 +6,6 @@ import { SiGoland, SiTypescript, SiPostgresql, SiApachekafka, SiRedis } from 're
 import { MdClose } from 'react-icons/md';
 import * as Dialog from '@radix-ui/react-dialog'; 
 import projects from './projects/projects';
-import { useEffect, useState } from 'react';
 
 export default function HomeLanding() {
   const [isDarkMode, setIsDarkMode] = useState(true); // Set dark mode as default
@@ -27,6 +25,13 @@ export default function HomeLanding() {
     setIsDarkMode(isDark);
     document.documentElement.classList.toggle('dark', isDark);
     localStorage.setItem('theme', isDark ? 'dark' : 'light');
+  };
+
+  const scrollToResume = () => {
+    const resumeSection = document.getElementById('resume');
+    if (resumeSection) {
+      resumeSection.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   return (
@@ -70,9 +75,7 @@ export default function HomeLanding() {
         </p>
         <div className="flex space-x-6 mb-8">
           <button
-            onClick={() => {
-              document.getElementById('resume').scrollIntoView({ behavior: 'smooth' });
-            }}
+            onClick={scrollToResume} // Scroll to Resume section
             className="px-6 py-3 bg-blue-500 text-white rounded-lg dark:bg-blue-700 hover:bg-blue-600 font-paragraph"
           >
             Resume
