@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import * as Toggle from '@radix-ui/react-toggle';
 import * as Tabs from '@radix-ui/react-tabs';
-import { FaGithub, FaDiscord, FaAws, FaDocker, FaJava, FaJsSquare, FaPython } from 'react-icons/fa';
+import { FaGithub, FaAws, FaDocker, FaJava, FaJsSquare, FaPython } from 'react-icons/fa';
 import { SiGoland, SiTypescript, SiPostgresql, SiApachekafka, SiRedis } from 'react-icons/si';
 import { MdClose } from 'react-icons/md';
 import * as Dialog from '@radix-ui/react-dialog'; 
