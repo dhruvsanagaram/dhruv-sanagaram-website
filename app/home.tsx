@@ -35,8 +35,6 @@ export default function HomeLanding() {
       <header className="fixed top-0 left-0 w-full bg-white dark:bg-gray-800 shadow-lg z-50">
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center">
           <div className="ml-auto flex items-center space-x-6">
-            <a href="/blog" className="text-gray-700 dark:text-gray-300 hover:underline font-paragraph">Blog</a>
-            <a href="/travel-diary" className="text-gray-700 dark:text-gray-300 hover:underline font-paragraph">Travel Diary</a>
             <Toggle.Root
               aria-label="Toggle Dark Mode"
               className="p-2 bg-blue-500 text-white rounded-full dark:bg-blue-700"
@@ -80,11 +78,6 @@ export default function HomeLanding() {
           </button>
           <a href="https://www.linkedin.com/in/dhruvsanagaram" className="px-6 py-3 bg-gray-300 text-gray-900 rounded-lg dark:bg-gray-600 dark:text-white font-paragraph">
             LinkedIn
-          </a>
-        </div>
-        <div className="flex space-x-6">
-          <a href="https://github.com/dhruvsanagaram" className="text-gray-400 hover:text-white">
-            <FaGithub className="w-8 h-8" />
           </a>
         </div>
       </section>
@@ -167,8 +160,8 @@ export default function HomeLanding() {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="flex flex-col items-center py-12 mb-16">
-        <h2 className="text-4xl font-bold mb-20 text-gray-800 dark:text-white">Projects</h2>
+      <section id="projects" className="flex flex-col items-center py-12 mb-16 font-title">
+        <h2 className="text-4xl font-bold mb-20 text-gray-800 dark:text-white font-header">Projects</h2>
         <div className="flex justify-center space-x-20">
           {projects.map((project, index) => (
             <Dialog.Root key={index}>
@@ -178,7 +171,7 @@ export default function HomeLanding() {
                   alt={`${project.title} Logo`} 
                   className={`w-full h-full object-contain ${
                     project.title === 'Linux Project' || project.title === 'Socialblade Project' ? 'p-7' : ''
-                  } rounded-md`}
+                  } rounded-full`}
                 />
               </Dialog.Trigger>
               <Dialog.Overlay className="fixed inset-0 bg-black opacity-60 z-40" />
@@ -188,12 +181,22 @@ export default function HomeLanding() {
                     <MdClose className="w-6 h-6" />
                   </button>
                 </Dialog.Close>
-                <div className="flex-1 text-center lg:text-left text-gray-700 dark:text-gray-300">
-                  <h3 className="text-2xl font-semibold text-blue-500 dark:text-purple-500 mb-4">{project.title}</h3>
+                <div className="flex-1 text-center lg:text-left text-gray-700 dark:text-gray-300 font-paragraph">
+                  <h3 className="text-2xl font-semibold text-blue-500 dark:text-purple-500 mb-4 font-header">{project.title}</h3>
                   <p>{project.description}</p>
                 </div>
+
+                {/* Adjust image size based on project title */}
                 <div className="flex justify-center items-center mt-4 lg:mt-0">
-                  <img src={project.image} alt={`${project.title} Image`} className="w-80 h-80 lg:w-96 lg:h-96 object-contain rounded-lg" />
+                  <img 
+                    src={project.image} 
+                    alt={`${project.title} Image`} 
+                    className={`object-contain rounded-lg ${
+                      project.title === 'CNN Optimizer' ? 'w-96 h-96 lg:w-[500px] lg:h-[500px]' :
+                      project.title === 'Frogger' ? 'w-64 h-64 lg:w-48 lg:h-48' :
+                      'w-80 h-80 lg:w-96 lg:h-96'
+                    }`}
+                  />
                 </div>
               </Dialog.Content>
             </Dialog.Root>
@@ -203,9 +206,9 @@ export default function HomeLanding() {
 
 
       {/* Stack Section */}
-      <section id="stack" className="py-12 mb-4 bg-gray-200 dark:bg-gray-800 ">
-        <h2 className="text-4xl font-bold mb-10 text-center text-gray-800 dark:text-white">Stack</h2>
-        <div className="max-w-5xl mx-auto text-center space-y-12">
+      <section id="stack" className="py-12 mb-4 bg-gray-200 dark:bg-gray-800 font-header">
+        <h2 className="text-4xl font-bold mb-12 text-center text-gray-800 dark:text-white">Stack</h2>
+        <div className="max-w-5xl mx-auto text-center space-y-12 mb-10">
           {/* Languages */}
           <div className="flex justify-center space-x-20 text-6xl text-gray-700 dark:text-gray-300">
             <FaJava />
@@ -226,7 +229,7 @@ export default function HomeLanding() {
       </section>
 
       {/* Resume Section */}
-      <section id="resume" className="py-12 ">
+      <section id="resume" className="py-12 font-header">
         <h2 className="text-4xl font-bold mb-8 text-center text-gray-800 dark:text-white">Resume</h2>
         <div className="flex flex-col items-center">
           {/* PDF Viewer */}
