@@ -1,13 +1,13 @@
 "use client";
 
-import { useState, useEffect } from 'react';
-import * as Toggle from '@radix-ui/react-toggle';
+import Image from 'next/image';
 import * as Tabs from '@radix-ui/react-tabs';
 import { FaGithub, FaAws, FaDocker, FaJava, FaJsSquare, FaPython } from 'react-icons/fa';
 import { SiGoland, SiTypescript, SiPostgresql, SiApachekafka, SiRedis } from 'react-icons/si';
 import { MdClose } from 'react-icons/md';
 import * as Dialog from '@radix-ui/react-dialog'; 
 import projects from './projects/projects';
+import { useEffect, useState } from 'react';
 
 export default function HomeLanding() {
   const [isDarkMode, setIsDarkMode] = useState(true); // Set dark mode as default
@@ -35,16 +35,15 @@ export default function HomeLanding() {
       <header className="fixed top-0 left-0 w-full bg-white dark:bg-gray-800 shadow-lg z-50">
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center">
           <div className="ml-auto flex items-center space-x-6">
-            <Toggle.Root
+            <button
               aria-label="Toggle Dark Mode"
               className="p-2 bg-blue-500 text-white rounded-full dark:bg-blue-700"
-              pressed={isDarkMode}
-              onPressedChange={toggleDarkMode}
+              onClick={toggleDarkMode}
             >
               <span className="text-lg font-semibold font-paragraph">
                 {isDarkMode ? '🌜' : '🌞'}
               </span>
-            </Toggle.Root>
+            </button>
           </div>
         </nav>
       </header>
@@ -52,20 +51,22 @@ export default function HomeLanding() {
       {/* Hero Section */}
       <section className="flex flex-col items-center justify-center min-h-screen text-center space-y-6 py-16">
         <div className="rounded-full overflow-hidden w-60 h-60 mb-6">
-          <img
+          <Image
             src="/headshot.jpeg"
             alt="Headshot of Dhruv Sanagaram"
-            className="w-full h-full object-cover"
+            width={240}
+            height={240}
+            className="rounded-full"
           />
         </div>
         <h1 className="text-6xl font-title mb-4">
-          <span className="text-blue-500">hey, I'm</span> <span className="text-purple-500">Dhruv Sanagaram</span>
+          <span className="text-blue-500">hey, I&apos;m</span> <span className="text-purple-500">Dhruv Sanagaram</span>
         </h1>
         <p className="text-2xl font-header text-gray-700 dark:text-gray-300 typing mb-4">
           backend software engineer
         </p>
         <p className="text-lg font-paragraph text-gray-600 dark:text-gray-400 max-w-xl mb-8">
-          I’m passionate about backend systems and distributed technologies. I've interned at Intercontinental Exchange and Roche Information Systems, working with modern cloud and data stack solutions.
+          I’m passionate about backend systems and distributed technologies. I&apos;ve interned at Intercontinental Exchange and Roche Information Systems, working with modern cloud and data stack solutions.
         </p>
         <div className="flex space-x-6 mb-8">
           <button
@@ -123,7 +124,7 @@ export default function HomeLanding() {
                 <div>Deployed microservices to ~41,000 end-users and used ArgoCD to continuously deliver feature updates</div>
               </div>
             </div>
-            <img src="/icemarkets_logo.jpeg" alt="Intercontinental Exchange Logo" className="w-40 h-40 object-contain rounded-lg" />
+            <Image src="/icemarkets_logo.jpeg" alt="Intercontinental Exchange Logo" width={160} height={160} className="rounded-lg" />
           </Tabs.Content>
 
           <Tabs.Content value="roche" className="flex flex-col lg:flex-row items-center lg:items-start space-y-4 lg:space-y-0 lg:space-x-8 font-paragraph">
@@ -139,7 +140,7 @@ export default function HomeLanding() {
                 <div>Provisioned SonarQube quality gate checks with Python and Terraform scripts.</div>
               </div>
             </div>
-            <img src="/roche.png" alt="Roche Logo" className="w-40 h-40 object-contain rounded-lg" />
+            <Image src="/roche.png" alt="Roche Logo" width={160} height={160} className="rounded-lg" />
           </Tabs.Content>
 
           <Tabs.Content value="catlab" className="flex flex-col lg:flex-row items-center lg:items-start space-y-4 lg:space-y-0 lg:space-x-8 font-paragraph">
@@ -154,7 +155,7 @@ export default function HomeLanding() {
                 <div>Used Python for data preprocessing in pseudocode to code LLM translations.</div>
               </div>
             </div>
-            <img src="/catlab.png" alt="UIUC CAT Lab Logo" className="w-40 h-40 object-contain rounded-lg" />
+            <Image src="/catlab.png" alt="UIUC CAT Lab Logo" width={160} height={160} className="rounded-lg" />
           </Tabs.Content>
         </Tabs.Root>
       </section>
@@ -166,10 +167,12 @@ export default function HomeLanding() {
           {projects.map((project, index) => (
             <Dialog.Root key={index}>
               <Dialog.Trigger className="flex justify-center items-center w-60 h-60 rounded-full bg-white shadow-lg dark:bg-gray-700 hover:shadow-xl transition-transform transform hover:scale-105 overflow-hidden">
-                <img 
+                <Image 
                   src={project.logo} 
                   alt={`${project.title} Logo`} 
-                  className={`w-full h-full object-contain ${
+                  width={240}
+                  height={240}
+                  className={`object-contain ${
                     project.title === 'Linux Project' || project.title === 'Socialblade Project' ? 'p-7' : ''
                   } rounded-full`}
                 />
@@ -188,14 +191,12 @@ export default function HomeLanding() {
 
                 {/* Adjust image size based on project title */}
                 <div className="flex justify-center items-center mt-4 lg:mt-0">
-                  <img 
+                  <Image 
                     src={project.image} 
                     alt={`${project.title} Image`} 
-                    className={`object-contain rounded-lg ${
-                      project.title === 'CNN Optimizer' ? 'w-96 h-96 lg:w-[500px] lg:h-[500px]' :
-                      project.title === 'Frogger' ? 'w-64 h-64 lg:w-48 lg:h-48' :
-                      'w-80 h-80 lg:w-96 lg:h-96'
-                    }`}
+                    width={project.title === 'CNN Optimizer' ? 500 : project.title === 'Frogger' ? 128 : 320}
+                    height={project.title === 'CNN Optimizer' ? 500 : project.title === 'Frogger' ? 128 : 320}
+                    className="object-contain rounded-lg"
                   />
                 </div>
               </Dialog.Content>
