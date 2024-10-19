@@ -14,12 +14,15 @@ const config: Config = {
         text: "var(--color-text)",
       },
       fontFamily: {
-        roboto: ['Roboto', 'sans-serif'],
-        montserrat: ['Montserrat', 'sans-serif'],
-      }
+        // Custom fonts for different elements
+        title: ['Open Sans', 'serif'],   // For titles
+        header: ['Lora', 'serif'],             // For headers
+        paragraph: ['Roboto', 'serif'],   // For paragraphs
+      },
     },
   },
   plugins: [],
-  darkMode: 'class'
+  darkMode: 'class',
 };
+
 export default config;
